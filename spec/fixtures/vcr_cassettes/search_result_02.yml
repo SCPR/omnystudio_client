@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cms.omnystudio.fm/api/search/episodes?organizationId=STUB_ORGANIZATION_FROM_OPTIONS
+    body:
+      encoding: UTF-8
+      string: '{null}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.1 (darwin16.4.0 x86_64) ruby/2.1.0p0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token token=STUB_TOKEN
+      Content-Length:
+      - '4'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 03 Apr 2018 18:08:19 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Link:
+      - "<https://cms.omnystudio.fm/api/search/episodes?organization_id=STUB_ORGANIZATION_FROM_OPTIONS&page=3>;
+        rel=\"last\", <https://cms.omnystudio.fm/api/search/episodes?organization_id=STUB_ORGANIZATION_FROM_OPTIONS&page=2>;
+        rel=\"next\""
+      X-Per-Page:
+      - '100'
+      X-Page:
+      - '1'
+      X-Total:
+      - '247'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"d751713988987e9331980363e24189ce"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ffa69295-6431-4b2c-8290-6168984e8bb8
+      X-Runtime:
+      - '0.026520'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version:
+  recorded_at: Tue, 03 Apr 2018 18:08:20 GMT
+recorded_with: VCR 4.0.0
