@@ -21,7 +21,7 @@ module OmnyStudioClient
     #   omnystudio #=> new OmnyStudioClient
 
     def new options={}
-      @api_base_url = options[:api_base_url] || "https://api.omnystudio.com"
+      @api_base_url = options[:api_base_url] || "https://api.omnystudio.com/v0"
       @token = options[:token]
 
       self
