@@ -3,7 +3,7 @@ require 'ostruct'
 require 'spec_helper'
 require 'webmock/rspec'
 
-describe OmnyStudioClient::Podcast do
+describe OmnyStudioClient::Program do
   describe "list" do
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })

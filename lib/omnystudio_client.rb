@@ -31,7 +31,7 @@ module OmnyStudioClient
     # @option options [Hash] :params Request params in a hash
     # @option options [String] :payload If the request method is `POST`, the body of the post
     # @option options [String] :url Request url
-    # @note This is a generalized REST method that is used by both the Clip and Podcast class.
+    # @note This is a generalized REST method that is used by both the Clip and Program class.
     #   If it's successful, it returns a struct representing the data. If it fails, it raises a ConnectionError.
     # @example Get a list of programs with #connection
     #   omnystudio.connection({
@@ -80,20 +80,20 @@ module OmnyStudioClient
       self::ClipCollection.new
     end
 
-    # @return a new instance of OmnyStudioClient::Podcast
-    # @example Make a new Podcast instance
-    #   omnystudio.program("12345") #=> new OmnyStudioClient::Podcast with id 12345
+    # @return a new instance of OmnyStudioClient::Program
+    # @example Make a new Program instance
+    #   omnystudio.program("12345") #=> new OmnyStudioClient::Program with id 12345
 
     def program(id=nil)
-      self::Podcast.new(id)
+      self::Program.new(id)
     end
 
-    # @return a new instance of OmnyStudioCilent::PodcastCollection
-    # @example Make a new Podcasts instance
-    #   omnystudio.programs #=> new OmnyStudioClient::PodcastCollection
+    # @return a new instance of OmnyStudioCilent::ProgramCollection
+    # @example Make a new Programs instance
+    #   omnystudio.programs #=> new OmnyStudioClient::ProgramCollection
 
     def programs
-      self::PodcastCollection.new
+      self::ProgramCollection.new
     end
   end
 end

@@ -5,12 +5,12 @@ require "rest-client"
 module OmnyStudioClient
 
   # @author Jay Arella
-  class Podcast
+  class Program
 
-    # @return a OmnyStudioClient::Podcast instance
-    # @note This is used to initialize the program id when creating a new Podcast instance
-    # @example Create a new instance of OmnyStudioClient::Podcast
-    #   OmnyStudioClient::Podcast.new("{program_id}") #=> #<OmnyStudioClient::Podcast @id="{program_id}">
+    # @return a OmnyStudioClient::Program instance
+    # @note This is used to initialize the program id when creating a new Program instance
+    # @example Create a new instance of OmnyStudioClient::Program
+    #   OmnyStudioClient::Program.new("{program_id}") #=> #<OmnyStudioClient::Program @id="{program_id}">
 
     def initialize(id=nil)
       @id = id

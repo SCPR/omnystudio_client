@@ -5,7 +5,7 @@ require "rest-client"
 module OmnyStudioClient
 
   # @author Jay Arella
-  class PodcastCollection
+  class ProgramCollection
 
     # @return a OmnyStudioClient
     # @note This is used as a way to access top level attributes
