@@ -17,20 +17,20 @@ module OmnyStudioClient
     end
 
     # @return a OmnyStudioClient::Episode instance
-    # @note This is used to call a new Episode instance with a given podcast id and episode_id
+    # @note This is used to call a new Episode instance with a given podcast id and clip_id
     # @example Call a new instance of OmnyStudioClient::Episode
-    #   omnystudio.podcast("12345").episode("56789") #=> #<OmnyStudioClient::Episode @id="{episode_Id}" @program_id="{program_id}" >
+    #   omnystudio.podcast("12345").clip("56789") #=> #<OmnyStudioClient::Episode @id="{clip_Id}" @program_id="{program_id}" >
 
-    def episode(episode_id=nil)
-      OmnyStudioClient::Episode.new(@id, episode_id)
+    def clip(clip_id=nil)
+      OmnyStudioClient::Episode.new(@id, clip_id)
     end
 
     # @return a OmnyStudioClient::EpisodeCollection instance
     # @note This is used to call a new Episodes instance with a given podcast id
     # @example Call a new instance of OmnyStudioClient::EpisodeCollection
-    #   omnystudio.podcast("12345").episodes #=> #<OmnyStudioClient::EpisodeCollection @program_id="{program_id}" >
+    #   omnystudio.podcast("12345").clips #=> #<OmnyStudioClient::EpisodeCollection @program_id="{program_id}" >
 
-    def episodes
+    def clips
       OmnyStudioClient::EpisodeCollection.new(@id)
     end
 

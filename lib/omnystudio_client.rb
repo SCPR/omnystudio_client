@@ -1,5 +1,5 @@
-require "omnystudio_client/episode_collection"
-require "omnystudio_client/episode"
+require "omnystudio_client/clip_collection"
+require "omnystudio_client/clip"
 require "omnystudio_client/podcast_collection"
 require "omnystudio_client/podcast"
 
@@ -74,9 +74,9 @@ module OmnyStudioClient
 
     # @return a new instance of OmnyStudioClient::EpisodeCollection
     # @example Make a new Episodes instance
-    #   omnystudio.episodes #=> new OmnyStudioClient::EpisodeCollection
+    #   omnystudio.clips #=> new OmnyStudioClient::EpisodeCollection
 
-    def episodes
+    def clips
       self::EpisodeCollection.new
     end
 

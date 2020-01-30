@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://cms.omnystudio.fm/api/search/episodes?published=true
+    uri: https://cms.omnystudio.fm/api/search/clips?published=true
     body:
       encoding: UTF-8
       string: 'null'
@@ -37,8 +37,8 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Link:
-      - "<https://cms.omnystudio.fm/api/search/episodes?page=3&published=true>; rel=\"last\",
-        <https://cms.omnystudio.fm/api/search/episodes?page=2&published=true>; rel=\"next\""
+      - "<https://cms.omnystudio.fm/api/search/clips?page=3&published=true>; rel=\"last\",
+        <https://cms.omnystudio.fm/api/search/clips?page=2&published=true>; rel=\"next\""
       X-Per-Page:
       - '100'
       X-Page:

@@ -8,7 +8,7 @@ module OmnyStudioClient
   class EpisodeCollection
 
     # @return a OmnyStudioClient::EpisodeCollection instance
-    # @note This is used to initialize the podcast id and episode id when creating a new Episode instance
+    # @note This is used to initialize the podcast id and clip id when creating a new Episode instance
     # @example Initialize a new instance of OmnyStudioClient::EpisodeCollection
     #   OmnyStudioClient::EpisodeCollection.new("{program_id}") #=> #<OmnyStudioClient::EpisodeCollection @id=nil, @program_id="{program_id}">
 
@@ -25,12 +25,12 @@ module OmnyStudioClient
       @config ||= OmnyStudioClient
     end
 
-    # @return an array of structs that represent a list of episodes for a given podcast
+    # @return an array of structs that represent a list of clips for a given podcast
     # @note If a @program_id is not given, it raises an error
     # @see OmnyStudioClient#connection
-    # @example List a podcast's episodes
-    #   omnystudio.podcast("12345").episodes.list
-    #   #=> An array of structs representing a list of episodes for a given podcast
+    # @example List a podcast's clips
+    #   omnystudio.podcast("12345").clips.list
+    #   #=> An array of structs representing a list of clips for a given podcast
 
     def list options={}
       if !@program_id
@@ -38,22 +38,22 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/podcasts/#{@program_id}/episodes",
+        :url => "#{config.api_base_url}/networks/#{config.network_id}/podcasts/#{@program_id}/clips",
         :method => :get
       })
     end
 
-    # @return an array of structs that represents the search results by episode
+    # @return an array of structs that represents the search results by clip
     # @see OmnyStudioClient#connection
-    # @example Search for an episode with externalId 'show_episode-12345'
-    #   omnystudio.episode.search({
-    #     externalId: 'show_episode-1245'
+    # @example Search for an clip with externalId 'show_clip-12345'
+    #   omnystudio.clip.search({
+    #     externalId: 'show_clip-1245'
     #   })
-    #   #=> An array of one struct representing 'show_episode-12345'
+    #   #=> An array of one struct representing 'show_clip-12345'
 
     def search params={}
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/search/episodes",
+        :url => "#{config.api_base_url}/search/clips",
         :method => :get,
         :params => params
       })

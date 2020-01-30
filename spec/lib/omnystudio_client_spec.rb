@@ -10,7 +10,7 @@ describe OmnyStudioClient do
         token: "STUB_TOKEN"
       })
 
-      expect(@omnystudio.episodes.config.token).to eq "STUB_TOKEN"
+      expect(@omnystudio.clips.config.token).to eq "STUB_TOKEN"
       expect(@omnystudio.podcasts.config.token).to eq "STUB_TOKEN"
     end
   end
@@ -30,13 +30,13 @@ describe OmnyStudioClient do
     it "should add params to request_headers if they exist" do
       VCR.use_cassette("connection_result_01") do
         @omnystudio.connection({
-          url: "https://cms.omnystudio.fm/api/search/episodes",
+          url: "https://cms.omnystudio.fm/api/search/clips",
           method: :get,
           params: {
             published: true
           }
         })
-        expect(WebMock).to have_requested(:get, "https://cms.omnystudio.fm/api/search/episodes?published=true").once
+        expect(WebMock).to have_requested(:get, "https://cms.omnystudio.fm/api/search/clips?published=true").once
       end
 
     end
