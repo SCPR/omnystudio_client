@@ -16,15 +16,15 @@ module OmnyStudioClient
       @config ||= OmnyStudioClient
     end
 
-    # @return an array of structs that represents a list of podcasts
+    # @return an array of structs that represents a list of programs
     # @note It needs to be initialized with a network id
     # @see OmnyStudioClient#connection
-    # @example Get a list of all podcasts
-    #   omnystudio.podcasts.list #=> An array of structs representing a list of podcasts
+    # @example Get a list of all programs
+    #   omnystudio.programs.list #=> An array of structs representing a list of programs
 
     def list options={}
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/podcasts",
+        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs",
         :method => :get
       })
     end

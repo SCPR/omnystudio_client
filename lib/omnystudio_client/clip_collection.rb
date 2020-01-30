@@ -8,7 +8,7 @@ module OmnyStudioClient
   class EpisodeCollection
 
     # @return a OmnyStudioClient::EpisodeCollection instance
-    # @note This is used to initialize the podcast id and clip id when creating a new Episode instance
+    # @note This is used to initialize the program id and clip id when creating a new Episode instance
     # @example Initialize a new instance of OmnyStudioClient::EpisodeCollection
     #   OmnyStudioClient::EpisodeCollection.new("{program_id}") #=> #<OmnyStudioClient::EpisodeCollection @id=nil, @program_id="{program_id}">
 
@@ -25,12 +25,12 @@ module OmnyStudioClient
       @config ||= OmnyStudioClient
     end
 
-    # @return an array of structs that represent a list of clips for a given podcast
+    # @return an array of structs that represent a list of clips for a given program
     # @note If a @program_id is not given, it raises an error
     # @see OmnyStudioClient#connection
-    # @example List a podcast's clips
-    #   omnystudio.podcast("12345").clips.list
-    #   #=> An array of structs representing a list of clips for a given podcast
+    # @example List a program's clips
+    #   omnystudio.program("12345").clips.list
+    #   #=> An array of structs representing a list of clips for a given program
 
     def list options={}
       if !@program_id
@@ -38,7 +38,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/podcasts/#{@program_id}/clips",
+        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips",
         :method => :get
       })
     end

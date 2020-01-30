@@ -11,7 +11,7 @@ describe OmnyStudioClient do
       })
 
       expect(@omnystudio.clips.config.token).to eq "STUB_TOKEN"
-      expect(@omnystudio.podcasts.config.token).to eq "STUB_TOKEN"
+      expect(@omnystudio.programs.config.token).to eq "STUB_TOKEN"
     end
   end
 

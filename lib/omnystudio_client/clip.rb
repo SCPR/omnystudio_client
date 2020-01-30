@@ -8,7 +8,7 @@ module OmnyStudioClient
   class Episode
 
     # @return a OmnyStudioClient::Episode instance
-    # @note This is used to initialize the podcast id and clip id when creating a new Episode instance
+    # @note This is used to initialize the program id and clip id when creating a new Episode instance
     # @example Initialize a new instance of OmnyStudioClient::Episode
     #   OmnyStudioClient::Episode.new("{program_id}", "{clip_id}") #=> #<OmnyStudioClient::Episode @id="{clip_id}", @program_id="{program_id}">
 
@@ -30,7 +30,7 @@ module OmnyStudioClient
     # @note If a @program_id, options[:title], and options[:pubdate] aren't given, it raises an error.
     # @see OmnyStudioClient#connection
     # @example Create an clip
-    #   omnystudio.podcast("12345").clip.create({
+    #   omnystudio.program("12345").clip.create({
     #     title: "title",
     #     pubdate: "2020-06-01T14:54:02.690Z"
     #   })
@@ -42,7 +42,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/podcasts/#{@program_id}/clips",
+        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips",
         :method => :post,
         :body => options
       })
@@ -52,7 +52,7 @@ module OmnyStudioClient
     # @note If neither a @program_id and @clip_id are given, it raises an error
     # @see OmnyStudioClient#connection
     # @example Delete an clip
-    #   omnystudio.podcast("12345").clip("56789").delete
+    #   omnystudio.program("12345").clip("56789").delete
     #   #=> A struct with a property "success" of type "string"
 
     def delete options={}
@@ -61,15 +61,15 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/podcasts/#{@program_id}/clips/#{@id}",
+        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips/#{@id}",
         :method => :delete
       })
     end
 
-    # @return a struct that represents an clip of a given podcast id and clip id
+    # @return a struct that represents an clip of a given program id and clip id
     # @see OmnyStudioClient#connection
     # @example Show an clip
-    #   omnystudio.podcast("12345").clip("56789").show
+    #   omnystudio.program("12345").clip("56789").show
     #   #=> A struct representing clip 56789
 
     def show options={}
@@ -78,7 +78,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/podcasts/#{@program_id}/clips/#{@id}",
+        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips/#{@id}",
         :method => :get
       })
     end
@@ -87,7 +87,7 @@ module OmnyStudioClient
     # @note If neither a @program_id and @clip_id are given, it raises an error
     # @see OmnyStudioClient#connection
     # @example Update an clip's preCount
-    #   omnystudio.podcast("12345").clip("56789").update({
+    #   omnystudio.program("12345").clip("56789").update({
     #     preCount: 2
     #   })
     #   #=> A struct representing clip '56789' with preCount 2
@@ -98,7 +98,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/podcasts/#{@program_id}/clips/#{@id}",
+        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips/#{@id}",
         :method => :put,
         :body => options
       })

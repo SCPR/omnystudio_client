@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/podcasts/STUB_PODCAST_ID/clips/STUB_EPISODE_ID
+    uri: https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PODCAST_ID/clips/STUB_EPISODE_ID
     body:
       encoding: UTF-8
       string: "{}"

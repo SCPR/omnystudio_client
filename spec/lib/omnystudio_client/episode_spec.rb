@@ -5,27 +5,27 @@ require 'webmock/rspec'
 
 describe OmnyStudioClient::Episode do
   describe "create" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/podcasts/STUB_PODCAST_ID/clips"
+    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PODCAST_ID/clips"
 
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
-      @podcast = @omnystudio.podcast('STUB_PODCAST_ID')
+      @program = @omnystudio.program('STUB_PODCAST_ID')
     end
 
     it "should return an ArgumentError if lacking any of the required options: program_id, body, body[:title], body[:pubdate]" do
-      podcast_without_id = @omnystudio.podcast
-      podcast_with_id = @podcast
+      program_without_id = @omnystudio.program
+      program_with_id = @program
 
-      expect { podcast_without_id.clip.create }.to raise_error(ArgumentError)
-      expect { podcast_with_id.clip.create }.to raise_error(ArgumentError)
-      expect { podcast_with_id.clip.create({}) }.to raise_error(ArgumentError)
-      expect { podcast_with_id.clip.create({ title: "example_title" }) }.to raise_error(ArgumentError)
-      expect { podcast_with_id.clip.create({ pubdate: "2020-06-01T14:54:02.690Z" }) }.to raise_error(ArgumentError)
+      expect { program_without_id.clip.create }.to raise_error(ArgumentError)
+      expect { program_with_id.clip.create }.to raise_error(ArgumentError)
+      expect { program_with_id.clip.create({}) }.to raise_error(ArgumentError)
+      expect { program_with_id.clip.create({ title: "example_title" }) }.to raise_error(ArgumentError)
+      expect { program_with_id.clip.create({ pubdate: "2020-06-01T14:54:02.690Z" }) }.to raise_error(ArgumentError)
     end
 
     it "should pass options[:body] as the body of the request" do
       VCR.use_cassette("create_result_01") do
-        @podcast.clip.create({
+        @program.clip.create({
           title: "This is a test title",
           pubdate: "2020-06-01T14:54:02.690Z"
         })
@@ -37,7 +37,7 @@ describe OmnyStudioClient::Episode do
 
     it "should only perform POST requests" do
       VCR.use_cassette("create_result_01") do
-        @podcast.clip.create({
+        @program.clip.create({
           title: "This is a test title",
           pubdate: "2020-06-01T14:54:02.690Z"
         })
@@ -51,22 +51,22 @@ describe OmnyStudioClient::Episode do
   end
 
   describe "delete" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/podcasts/STUB_PODCAST_ID/clips/STUB_EPISODE_ID"
+    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PODCAST_ID/clips/STUB_EPISODE_ID"
 
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
-      @podcast = @omnystudio.podcast('STUB_PODCAST_ID')
+      @program = @omnystudio.program('STUB_PODCAST_ID')
     end
 
     it "should return an ArgumentError if no program_id or clip_id is given" do
-      podcast_without_id = @omnystudio.podcast
+      program_without_id = @omnystudio.program
 
-      expect { podcast_without_id.clip.delete }.to raise_error(ArgumentError)
+      expect { program_without_id.clip.delete }.to raise_error(ArgumentError)
     end
 
     it "should only perform DELETE requests" do
       VCR.use_cassette("delete_result_01") do
-        @podcast.clip("STUB_EPISODE_ID").delete
+        @program.clip("STUB_EPISODE_ID").delete
 
         expect(WebMock).to have_requested(:delete, request_uri)
         expect(WebMock).not_to have_requested(:get, request_uri)
@@ -97,20 +97,20 @@ describe OmnyStudioClient::Episode do
   end
 
   describe "update" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/podcasts/STUB_PODCAST_ID/clips/STUB_EPISODE_ID"
+    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PODCAST_ID/clips/STUB_EPISODE_ID"
 
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
-      @podcast = @omnystudio.podcast('STUB_PODCAST_ID')
+      @program = @omnystudio.program('STUB_PODCAST_ID')
     end
 
     it "should return an ArgumentError if no program_id or clip_id is given" do
-      expect { @podcast.clip.update }.to raise_error(ArgumentError)
+      expect { @program.clip.update }.to raise_error(ArgumentError)
     end
 
     it "should pass options[:body] as the body of the request" do
       VCR.use_cassette("update_result_01") do
-        @podcast.clip("STUB_EPISODE_ID").update({
+        @program.clip("STUB_EPISODE_ID").update({
           preCount: 1,
           postCount: 2,
           insertionPoints: ["10.1", "15.23", "18"]
@@ -123,7 +123,7 @@ describe OmnyStudioClient::Episode do
 
     it "should pass an empty body if not given in options" do
       VCR.use_cassette("update_result_02") do
-        @podcast.clip("STUB_EPISODE_ID").update
+        @program.clip("STUB_EPISODE_ID").update
 
         expect(WebMock).to have_requested(:put, request_uri)
           .with(body: "{}")
@@ -132,7 +132,7 @@ describe OmnyStudioClient::Episode do
 
     it "should only perform PUT requests" do
       VCR.use_cassette("update_result_01") do
-        @podcast.clip("STUB_EPISODE_ID").update
+        @program.clip("STUB_EPISODE_ID").update
 
         expect(WebMock).not_to have_requested(:get, request_uri)
         expect(WebMock).not_to have_requested(:post, request_uri)

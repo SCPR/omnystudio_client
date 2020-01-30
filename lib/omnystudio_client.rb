@@ -1,7 +1,7 @@
 require "omnystudio_client/clip_collection"
 require "omnystudio_client/clip"
-require "omnystudio_client/podcast_collection"
-require "omnystudio_client/podcast"
+require "omnystudio_client/program_collection"
+require "omnystudio_client/program"
 
 # @author Jay Arella
 module OmnyStudioClient
@@ -33,12 +33,12 @@ module OmnyStudioClient
     # @option options [String] :url Request url
     # @note This is a generalized REST method that is used by both the Episode and Podcast class.
     #   If it's successful, it returns a struct representing the data. If it fails, it raises a ConnectionError.
-    # @example Get a list of podcasts with #connection
+    # @example Get a list of programs with #connection
     #   omnystudio.connection({
     #     method: :get,
-    #     url: "https://cms.omnystudio.fm/api/podcasts"
+    #     url: "https://cms.omnystudio.fm/api/programs"
     #   })
-    #   #=> Array of structs representing podcasts
+    #   #=> Array of structs representing programs
 
     def connection options={}
       request_headers = default_headers.merge({ params: options[:params] })
@@ -82,17 +82,17 @@ module OmnyStudioClient
 
     # @return a new instance of OmnyStudioClient::Podcast
     # @example Make a new Podcast instance
-    #   omnystudio.podcast("12345") #=> new OmnyStudioClient::Podcast with id 12345
+    #   omnystudio.program("12345") #=> new OmnyStudioClient::Podcast with id 12345
 
-    def podcast(id=nil)
+    def program(id=nil)
       self::Podcast.new(id)
     end
 
     # @return a new instance of OmnyStudioCilent::PodcastCollection
     # @example Make a new Podcasts instance
-    #   omnystudio.podcasts #=> new OmnyStudioClient::PodcastCollection
+    #   omnystudio.programs #=> new OmnyStudioClient::PodcastCollection
 
-    def podcasts
+    def programs
       self::PodcastCollection.new
     end
   end
