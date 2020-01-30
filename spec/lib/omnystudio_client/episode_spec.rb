@@ -12,7 +12,7 @@ describe OmnyStudioClient::Episode do
       @podcast = @omnystudio.podcast('STUB_PODCAST_ID')
     end
 
-    it "should return an ArgumentError if lacking any of the required options: podcast_id, body, body[:title], body[:pubdate]" do
+    it "should return an ArgumentError if lacking any of the required options: program_id, body, body[:title], body[:pubdate]" do
       podcast_without_id = @omnystudio.podcast
       podcast_with_id = @podcast
 
@@ -58,7 +58,7 @@ describe OmnyStudioClient::Episode do
       @podcast = @omnystudio.podcast('STUB_PODCAST_ID')
     end
 
-    it "should return an ArgumentError if no podcast_id or episode_id is given" do
+    it "should return an ArgumentError if no program_id or episode_id is given" do
       podcast_without_id = @omnystudio.podcast
 
       expect { podcast_without_id.episode.delete }.to raise_error(ArgumentError)
@@ -104,7 +104,7 @@ describe OmnyStudioClient::Episode do
       @podcast = @omnystudio.podcast('STUB_PODCAST_ID')
     end
 
-    it "should return an ArgumentError if no podcast_id or episode_id is given" do
+    it "should return an ArgumentError if no program_id or episode_id is given" do
       expect { @podcast.episode.update }.to raise_error(ArgumentError)
     end
 
