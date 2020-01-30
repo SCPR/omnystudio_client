@@ -51,7 +51,7 @@ describe OmnyStudioClient::Clip do
   end
 
   describe "delete" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips/STUB_EPISODE_ID"
+    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips/STUB_CLIP_ID"
 
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
@@ -66,7 +66,7 @@ describe OmnyStudioClient::Clip do
 
     it "should only perform DELETE requests" do
       VCR.use_cassette("delete_result_01") do
-        @program.clip("STUB_EPISODE_ID").delete
+        @program.clip("STUB_CLIP_ID").delete
 
         expect(WebMock).to have_requested(:delete, request_uri)
         expect(WebMock).not_to have_requested(:get, request_uri)
@@ -97,7 +97,7 @@ describe OmnyStudioClient::Clip do
   end
 
   describe "update" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips/STUB_EPISODE_ID"
+    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips/STUB_CLIP_ID"
 
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
@@ -110,7 +110,7 @@ describe OmnyStudioClient::Clip do
 
     it "should pass options[:body] as the body of the request" do
       VCR.use_cassette("update_result_01") do
-        @program.clip("STUB_EPISODE_ID").update({
+        @program.clip("STUB_CLIP_ID").update({
           preCount: 1,
           postCount: 2,
           insertionPoints: ["10.1", "15.23", "18"]
@@ -123,7 +123,7 @@ describe OmnyStudioClient::Clip do
 
     it "should pass an empty body if not given in options" do
       VCR.use_cassette("update_result_02") do
-        @program.clip("STUB_EPISODE_ID").update
+        @program.clip("STUB_CLIP_ID").update
 
         expect(WebMock).to have_requested(:put, request_uri)
           .with(body: "{}")
@@ -132,7 +132,7 @@ describe OmnyStudioClient::Clip do
 
     it "should only perform PUT requests" do
       VCR.use_cassette("update_result_01") do
-        @program.clip("STUB_EPISODE_ID").update
+        @program.clip("STUB_CLIP_ID").update
 
         expect(WebMock).not_to have_requested(:get, request_uri)
         expect(WebMock).not_to have_requested(:post, request_uri)
