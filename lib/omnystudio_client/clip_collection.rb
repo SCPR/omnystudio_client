@@ -5,12 +5,12 @@ require "rest-client"
 module OmnyStudioClient
 
   # @author Jay Arella
-  class EpisodeCollection
+  class ClipCollection
 
-    # @return a OmnyStudioClient::EpisodeCollection instance
-    # @note This is used to initialize the program id and clip id when creating a new Episode instance
-    # @example Initialize a new instance of OmnyStudioClient::EpisodeCollection
-    #   OmnyStudioClient::EpisodeCollection.new("{program_id}") #=> #<OmnyStudioClient::EpisodeCollection @id=nil, @program_id="{program_id}">
+    # @return a OmnyStudioClient::ClipCollection instance
+    # @note This is used to initialize the program id and clip id when creating a new Clip instance
+    # @example Initialize a new instance of OmnyStudioClient::ClipCollection
+    #   OmnyStudioClient::ClipCollection.new("{program_id}") #=> #<OmnyStudioClient::ClipCollection @id=nil, @program_id="{program_id}">
 
     def initialize(program_id=nil)
       @program_id = program_id

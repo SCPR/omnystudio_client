@@ -3,7 +3,7 @@ require 'ostruct'
 require 'spec_helper'
 require 'webmock/rspec'
 
-describe OmnyStudioClient::Episode do
+describe OmnyStudioClient::Clip do
   describe "create" do
     request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PODCAST_ID/clips"
 
