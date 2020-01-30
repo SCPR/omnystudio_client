@@ -9,25 +9,19 @@ module OmnyStudioClient
   end
 
   class << self
-    attr_accessor :api_base_url, :network_id, :organization_id, :token
+    attr_accessor :api_base_url, :token
 
-    # @option options [String] :api_base_url The api base url includes the domain and `/api` endpoint
-    # @option options [String] :network_id The id of the OmnyStudio network
-    # @option options [String] :organization_id The id of the OmnyStudio organization
-    # @option options [String] :token The api token taken from OmnyStudio's developer settings (https://developers.omnystudio.fm/)
+    # @option options [String] :api_base_url The api base url
+    # @option options [String] :token The api token taken from OmnyStudio's developer settings (https://api.omnystudio.com/api-docs/index)
     # @return a new instance of OmnyStudioClient
     # @example Initialize OmnyStudioClient into a variable
     #   omnystudio = OmnyStudioClient.new({
-    #     network_id: '1234',
-    #     organization_id: '5678',
     #     token: '910'
     #   })
     #   omnystudio #=> new OmnyStudioClient
 
     def new options={}
-      @api_base_url = options[:api_base_url] || "https://cms.omnystudio.fm/api"
-      @network_id = options[:network_id]
-      @organization_id = options[:organization_id]
+      @api_base_url = options[:api_base_url] || "https://api.omnystudio.com"
       @token = options[:token]
 
       self
@@ -66,8 +60,6 @@ module OmnyStudioClient
     # @return a hash with the default request headers, includes the token
     # @example Calling #default_headers after initializing with a token
     #   omnystudio = OmnyStudioClient.new({
-    #     network_id: '1234',
-    #     organization_id: '5678',
     #     token: '910'
     #   })
     #   omnystudio.default_headers #=> { content_type: "application/json", authorization: "Token token=910", params: {} }
@@ -75,7 +67,7 @@ module OmnyStudioClient
     def default_headers
       {
         content_type: "application/json",
-        authorization: "Token token=#{@token}",
+        authorization: "OmnyToken #{@token}",
         params: {}
       }
     end
