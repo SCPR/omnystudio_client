@@ -7,17 +7,11 @@ describe OmnyStudioClient do
   describe "OmnyStudio.config" do
     it "should equal OmnyStudioClient if OmnyStudioClient is set up" do
       @omnystudio = OmnyStudioClient.new({
-        network_id: "STUB_NETWORK_ID",
-        organization_id: "STUB_ORGANIZATION_ID",
         token: "STUB_TOKEN"
       })
 
       expect(@omnystudio.episodes.config.token).to eq "STUB_TOKEN"
-      expect(@omnystudio.episodes.config.network_id).to eq "STUB_NETWORK_ID"
-      expect(@omnystudio.episodes.config.organization_id).to eq "STUB_ORGANIZATION_ID"
       expect(@omnystudio.podcasts.config.token).to eq "STUB_TOKEN"
-      expect(@omnystudio.podcasts.config.network_id).to eq "STUB_NETWORK_ID"
-      expect(@omnystudio.podcasts.config.organization_id).to eq "STUB_ORGANIZATION_ID"
     end
   end
 
