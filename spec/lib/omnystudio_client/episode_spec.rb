@@ -5,11 +5,11 @@ require 'webmock/rspec'
 
 describe OmnyStudioClient::Clip do
   describe "create" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PODCAST_ID/clips"
+    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips"
 
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
-      @program = @omnystudio.program('STUB_PODCAST_ID')
+      @program = @omnystudio.program('STUB_PROGRAM_ID')
     end
 
     it "should return an ArgumentError if lacking any of the required options: program_id, body, body[:title], body[:pubdate]" do
@@ -51,11 +51,11 @@ describe OmnyStudioClient::Clip do
   end
 
   describe "delete" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PODCAST_ID/clips/STUB_EPISODE_ID"
+    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips/STUB_EPISODE_ID"
 
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
-      @program = @omnystudio.program('STUB_PODCAST_ID')
+      @program = @omnystudio.program('STUB_PROGRAM_ID')
     end
 
     it "should return an ArgumentError if no program_id or clip_id is given" do
@@ -97,11 +97,11 @@ describe OmnyStudioClient::Clip do
   end
 
   describe "update" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PODCAST_ID/clips/STUB_EPISODE_ID"
+    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips/STUB_EPISODE_ID"
 
     before :each do
       @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
-      @program = @omnystudio.program('STUB_PODCAST_ID')
+      @program = @omnystudio.program('STUB_PROGRAM_ID')
     end
 
     it "should return an ArgumentError if no program_id or clip_id is given" do
