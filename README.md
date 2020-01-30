@@ -15,8 +15,6 @@ Configure your app to connect to OmnyStudio, either in an initializer or from yo
 ```ruby
 omnystudio = OmnyStudioClient.new({
   token: "{omnystudio api token}",
-  network_id: "{omnystudio network id}",
-  organization_id: "{omnystudio organization id}"
 })
 ```
 
