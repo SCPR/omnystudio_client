@@ -19,8 +19,6 @@ module OmnyStudioClient
 
     # @return a OmnyStudioClient
     # @note This is used as a way to access top level attributes
-    # @example Accessing a network id configuration
-    #   config.network_id #=> '{network id specified in initialization}'
 
     def config
       @config ||= OmnyStudioClient
@@ -42,7 +40,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips",
+        :url => "#{config.api_base_url}/programs/#{@program_id}/clips",
         :method => :post,
         :body => options
       })
@@ -61,7 +59,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips/#{@id}",
+        :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}",
         :method => :delete
       })
     end
@@ -78,7 +76,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips/#{@id}",
+        :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}",
         :method => :get
       })
     end
@@ -98,7 +96,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/networks/#{config.network_id}/programs/#{@program_id}/clips/#{@id}",
+        :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}",
         :method => :put,
         :body => options
       })
