@@ -5,10 +5,10 @@ require 'webmock/rspec'
 
 describe OmnyStudioClient::Clip do
   describe "create" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips"
+    request_uri = "https://cms.omnystudio.fm/api/programs/STUB_PROGRAM_ID/clips"
 
     before :each do
-      @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
+      @omnystudio = OmnyStudioClient.new()
       @program = @omnystudio.program('STUB_PROGRAM_ID')
     end
 
@@ -51,10 +51,10 @@ describe OmnyStudioClient::Clip do
   end
 
   describe "delete" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips/STUB_CLIP_ID"
+    request_uri = "https://cms.omnystudio.fm/api/programs/STUB_PROGRAM_ID/clips/STUB_CLIP_ID"
 
     before :each do
-      @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
+      @omnystudio = OmnyStudioClient.new()
       @program = @omnystudio.program('STUB_PROGRAM_ID')
     end
 
@@ -97,10 +97,10 @@ describe OmnyStudioClient::Clip do
   end
 
   describe "update" do
-    request_uri = "https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips/STUB_CLIP_ID"
+    request_uri = "https://cms.omnystudio.fm/api/programs/STUB_PROGRAM_ID/clips/STUB_CLIP_ID"
 
     before :each do
-      @omnystudio = OmnyStudioClient.new({ network_id: "STUB_NETWORK_ID" })
+      @omnystudio = OmnyStudioClient.new()
       @program = @omnystudio.program('STUB_PROGRAM_ID')
     end
 

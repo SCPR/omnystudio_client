@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs
+    uri: https://cms.omnystudio.fm/api/programs
     body:
       encoding: UTF-8
       string: 'null'

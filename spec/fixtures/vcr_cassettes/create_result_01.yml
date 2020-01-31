@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cms.omnystudio.fm/api/networks/STUB_NETWORK_ID/programs/STUB_PROGRAM_ID/clips
+    uri: https://cms.omnystudio.fm/api/programs/STUB_PROGRAM_ID/clips
     body:
       encoding: UTF-8
       string: "{\"title\":\"This is a test title\",\"pubdate\":\"2020-06-01T14:54:02.690Z\"}"
