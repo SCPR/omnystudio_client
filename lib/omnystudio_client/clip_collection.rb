@@ -40,21 +40,5 @@ module OmnyStudioClient
         :method => :get
       })
     end
-
-    # @return an array of structs that represents the search results by clip
-    # @see OmnyStudioClient#connection
-    # @example Search for an clip with externalId 'show_clip-12345'
-    #   omnystudio.clip.search({
-    #     externalId: 'show_clip-1245'
-    #   })
-    #   #=> An array of one struct representing 'show_clip-12345'
-
-    def search params={}
-      OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/search/clips",
-        :method => :get,
-        :params => params
-      })
-    end
   end
 end

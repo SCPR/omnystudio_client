@@ -77,25 +77,6 @@ describe OmnyStudioClient::Clip do
     end
   end
 
-  describe "search" do
-    before :each do
-      @omnystudio = OmnyStudioClient.new
-      @clips = @omnystudio.clips
-    end
-
-    it "should only perform GET requests" do
-      request_uri = "https://cms.omnystudio.fm/api/search/clips"
-      VCR.use_cassette("search_result_01") do
-        @clips.search
-        expect(WebMock).to have_requested(:get, request_uri)
-        expect(WebMock).not_to have_requested(:put, request_uri)
-        expect(WebMock).not_to have_requested(:post, request_uri)
-        expect(WebMock).not_to have_requested(:patch, request_uri)
-        expect(WebMock).not_to have_requested(:delete, request_uri)
-      end
-    end
-  end
-
   describe "update" do
     request_uri = "https://cms.omnystudio.fm/api/programs/STUB_PROGRAM_ID/clips/STUB_CLIP_ID"
 
