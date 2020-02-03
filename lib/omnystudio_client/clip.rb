@@ -93,13 +93,13 @@ module OmnyStudioClient
     #   #=> A struct representing clip '56789' with at midroll at 59 seconds.
 
     def update options={}
-      if !@program_id || !@id
-        raise ArgumentError.new("Both @program_id and @id variables are required.")
+      if !@id
+        raise ArgumentError.new("@id variable is required.")
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}",
-        :method => :put,
+        :url => "#{config.api_base_url}/clips/#{@id}",
+        :method => :post,
         :body => options
       })
     end
