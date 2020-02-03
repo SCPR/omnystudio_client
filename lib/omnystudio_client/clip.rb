@@ -29,10 +29,10 @@ module OmnyStudioClient
     # @see OmnyStudioClient#connection
     # @example Create an clip
     #   omnystudio.program("12345").clip.create({
-    #     title: "title",
-    #     pubdate: "2020-06-01T14:54:02.690Z"
+    #     Title: "title",
+    #     PublishedUtc: "2020-06-01T14:54:02.690Z"
     #   })
-    #   #=> A struct representing clip '12345' with title, "title", and scheduled to publish at June 1st, 2020
+    #   #=> A struct representing clip '12345' with Title, "title", and scheduled to publish at June 1st, 2020
 
     def create options={}
       if !@program_id
