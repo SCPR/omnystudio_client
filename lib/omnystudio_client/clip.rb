@@ -84,11 +84,13 @@ module OmnyStudioClient
     # @return a struct that represents the clip that was updated
     # @note If neither a @program_id and @clip_id are given, it raises an error
     # @see OmnyStudioClient#connection
-    # @example Update an clip's preCount
+    # @example Update a clip's MidRolls
     #   omnystudio.program("12345").clip("56789").update({
-    #     preCount: 2
+    #     Monetization: {
+    #       MidRolls: ["00:00:59"]
+    #     }
     #   })
-    #   #=> A struct representing clip '56789' with preCount 2
+    #   #=> A struct representing clip '56789' with at midroll at 59 seconds.
 
     def update options={}
       if !@program_id || !@id
