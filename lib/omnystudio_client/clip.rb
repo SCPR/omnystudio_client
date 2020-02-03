@@ -35,8 +35,8 @@ module OmnyStudioClient
     #   #=> A struct representing clip '12345' with title, "title", and scheduled to publish at June 1st, 2020
 
     def create options={}
-      if !@program_id || !options || !options[:title] || !options[:pubdate]
-        raise ArgumentError.new("@program_id, options[:title], and options[:pubdate] variables are required.")
+      if !@program_id
+        raise ArgumentError.new("@program_id is required.")
       end
 
       OmnyStudioClient.connection({
