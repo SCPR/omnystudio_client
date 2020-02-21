@@ -119,8 +119,8 @@ module OmnyStudioClient
       end
 
       query_string = ""
-      if @options.present? && @options[:AudioUrl].present?
-        query_string = "?audioUrl=#{@options[:AudioUrl]}"
+      if options.present? && options[:AudioUrl].present?
+        query_string = "?audioUrl=#{options[:AudioUrl]}"
       end
 
       OmnyStudioClient.connection({
