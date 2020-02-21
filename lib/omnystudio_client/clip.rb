@@ -103,5 +103,30 @@ module OmnyStudioClient
         :body => options
       })
     end
+
+    # @return a struct that represents the clip that was updated
+    # @note If neither a @program_id and @clip_id are given, it raises an error
+    # @see OmnyStudioClient#connection
+    # @example Update a clip's MidRolls
+    #   omnystudio.program("12345").clip("56789").upload_audio({
+    #     AudioUrl: "https://path.to/audio.mp3"
+    #   })
+    #   #=> A struct representing clip '56789' with a valid audio url
+
+    def upload_audio options={}
+      if !@program_id || !@id
+        raise ArgumentError.new("@id variable is required.")
+      end
+
+      query_string = ""
+      if @options.present? && @options[:AudioUrl].present?
+        query_string = "?audioUrl=#{@options[:AudioUrl]}"
+      end
+
+      OmnyStudioClient.connection({
+        :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}#{query_string}",
+        :method => :post
+      })
+    end
   end
 end
