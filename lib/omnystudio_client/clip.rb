@@ -115,7 +115,7 @@ module OmnyStudioClient
 
     def upload_audio options={}
       if !@program_id || !@id
-        raise ArgumentError.new("@id variable is required.")
+        raise ArgumentError.new("Both @program_id and @id variables are required.")
       end
 
       query_string = ""

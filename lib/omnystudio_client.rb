@@ -42,13 +42,14 @@ module OmnyStudioClient
 
     def connection options={}
       request_headers = default_headers.merge({ params: options[:params] })
+      payload = options[:body].to_json || ""
 
       begin
         response = RestClient::Request.execute(
           url: options[:url],
           method: options[:method],
           headers: request_headers,
-          payload: options[:body].to_json
+          payload: payload
         )
       rescue RestClient::ExceptionWithResponse => err
         raise ConnectionError.new("OmnyStudio ConnectionError: #{err.response.description}, Request: #{err.response.request.method} #{err.response.request.url}")
