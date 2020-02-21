@@ -124,7 +124,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}#{query_string}",
+        :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}/audio#{query_string}",
         :method => :post
       })
     end
