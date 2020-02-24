@@ -42,7 +42,7 @@ module OmnyStudioClient
 
     def connection options={}
       request_headers = default_headers.merge({ params: options[:params] })
-      payload = options[:body].to_json || ""
+      payload = options[:body].present? ? options[:body].to_json : ""
 
       begin
         response = RestClient::Request.execute(
