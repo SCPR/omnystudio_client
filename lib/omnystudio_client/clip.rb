@@ -47,19 +47,18 @@ module OmnyStudioClient
     end
 
     # @return a struct with a message that the clip was successfully/unsuccessfully deleted
-    # @note If neither a @program_id and @clip_id are given, it raises an error
+    # @note If a @clip_id is not given, it raises an error
     # @see OmnyStudioClient#connection
     # @example Delete an clip
     #   omnystudio.program("12345").clip("56789").delete
-    #   #=> A struct with a property "success" of type "string"
 
     def delete options={}
-      if !@program_id || !@id
+      if !@id
         raise ArgumentError.new("Both @program_id and @id variables are required.")
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}",
+        :url => "#{config.api_base_url}/clips/#{@id}",
         :method => :delete
       })
     end
@@ -82,7 +81,7 @@ module OmnyStudioClient
     end
 
     # @return a struct that represents the clip that was updated
-    # @note If neither a @program_id and @clip_id are given, it raises an error
+    # @note If @clip_id is not given, it raises an error
     # @see OmnyStudioClient#connection
     # @example Update a clip's MidRolls
     #   omnystudio.program("12345").clip("56789").update({
@@ -126,6 +125,26 @@ module OmnyStudioClient
       OmnyStudioClient.connection({
         :url => "#{config.api_base_url}/programs/#{@program_id}/clips/#{@id}/audio#{query_string}",
         :method => :put
+      })
+    end
+
+    # @return a struct that represents the clip that was updated
+    # @note If @clip_id is not given, it raises an error
+    # @see OmnyStudioClient#connection
+    # @example Update a clip's MidRolls
+    #   omnystudio.program("12345").clip("56789").update_visibility({
+    #     DesiredVisibility: "unlisted"
+    #   })
+
+    def update_visibility options={}
+      if !@id
+        raise ArgumentError.new("@id variable is required.")
+      end
+
+      OmnyStudioClient.connection({
+        :url => "#{config.api_base_url}/clips/#{@id}",
+        :method => :post,
+        :body => options
       })
     end
   end

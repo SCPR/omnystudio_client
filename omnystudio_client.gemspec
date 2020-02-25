@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = 'omnystudio_client'
-  s.version     = '0.7.1'
+  s.version     = '1.0.0'
   s.date        = '2018-03-13'
   s.summary     = "Ruby client for the OmnyStudio API"
   s.description = "Ruby client for the OmnyStudio API"
