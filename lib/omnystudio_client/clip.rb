@@ -142,7 +142,7 @@ module OmnyStudioClient
       end
 
       OmnyStudioClient.connection({
-        :url => "#{config.api_base_url}/clips/#{@id}",
+        :url => "#{config.api_base_url}/clips/#{@id}/visibility",
         :method => :post,
         :body => options
       })
