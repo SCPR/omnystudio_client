@@ -7,8 +7,6 @@ gem 'omnystudio_client', github:"scpr/omnystudio_client"
 ```
 
 ## Usage
-**Note:** OmnyStudio API props, such as `externalId`, are in camelCase instead of snake_case because OmnyStudio's API expects it when accessing their API. So when passing params or putting/posting a hash, use camelCase. When interfacing with the gem's API, use snake_case.
-
 ### Configuration
 Configure your app to connect to OmnyStudio, either in an initializer or from your environment files:
 
